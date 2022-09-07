@@ -38,6 +38,44 @@ def validate_expr(x: int, y: int, z: int) -> bool:
     return not (x or y or z) == (not x and not y and not z)
 
 
-# task1()
-task2()
+# Напишите программу, которая принимает на вход координаты точки (X и Y),
+# причём X ≠ 0 и Y ≠ 0 и выдаёт номер четверти плоскости,
+# в которой находится эта точка (или на какой оси она находится).
+# Пример:
+# x=34; y=-30 -> 4
+# x=2; y=4 -> 1
+# x=-34; y=-30 -> 3
+def task3():
+    print("Плоскость для точки (34, -30) =", define_plane(34, -30))
+    print("Плоскость для точки (2, 4) =", define_plane(2, 4))
+    print("Плоскость для точки (-34, -30) =", define_plane(-34, -30))
+    print("Плоскость для точки (2, -4) =", define_plane(2, -4))
 
+    result = define_plane(0, -4)
+    result_string = "точка находится на оси" if result == 0 else str(result)
+    print("Плоскость для точки (0, -4) =", result_string)
+
+    result = define_plane(1, 0)
+    result_string = "точка находится на оси" if result == 0 else str(result)
+    print("Плоскость для точки (1, 0) =", result_string)
+
+
+def define_plane(x: int, y: int) -> int:
+    if x > 0 and y > 0:
+        return 1
+
+    if x < 0 and y > 0:
+        return 2
+
+    if x < 0 and y < 0:
+        return 3
+
+    if x > 0 and y < 0:
+        return 4
+
+    return 0
+
+
+# task1()
+# task2()
+task3()
