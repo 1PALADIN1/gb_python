@@ -4,6 +4,9 @@
 # - 6 -> да
 # - 7 -> да
 # - 1 -> нет
+import math
+
+
 def task1():
     num = int(input("Введите день недели:\n"))
     if num > 7 or num < 1:
@@ -94,7 +97,23 @@ def task4():
     print("Для четверти", q, "диапазон значений:", output[q])
 
 
-# task1()
-# task2()
-# task3()
+# Напишите программу, которая принимает на вход координаты двух точек
+# и находит расстояние между ними в 2D пространстве.
+# Пример:
+# A (3,6); B (2,1) -> 5,09
+# A (7,-5); B (1,-1) -> 7,21
+def task5():
+    print("Расстояние между точками A(3,6) и B(2,1):", distance(3, 6, 2, 1))
+    print("Расстояние между точками A(7,-5) и B(1,-1):", distance(7, -5, 1, -1))
+
+
+def distance(ax: float, ay: float, bx: float, by: float) -> float:
+    sqr_magnitude = (bx - ax)**2 + (by - ay)**2
+    return math.sqrt(sqr_magnitude)
+
+
+task1()
+task2()
+task3()
 task4()
+task5()
