@@ -22,6 +22,7 @@ def task2():
         return
 
     result = []
+    # TODO: вывести (1, 12, 123, 1234)
     for n in range(1, num+1, 1):
         el = 1
         for i in range(1, n+1, 1):
@@ -34,7 +35,16 @@ def task2():
 
 # 3. Задайте список из n чисел последовательности (1 + 1/n)^n выведите на экран их сумму.
 def task3():
-    pass
+    num = int(input("Введите число:\n"))
+    if num < 1:
+        print("Число должно быть больше 1!")
+        return
+
+    result = 0
+    for n in range(1, num+1, 1):
+        result += (1 + 1/n) ** n
+
+    print(result)
 
 
 # 4. Задайте числами список из N элементов, заполненных из промежутка [-N, N].
@@ -50,7 +60,7 @@ def task5():
 
 
 # task1()
-task2()
+# task2()
 task3()
 task4()
 task5()
