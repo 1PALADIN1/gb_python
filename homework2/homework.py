@@ -1,3 +1,6 @@
+import random
+
+
 # 1. Напишите программу, которая принимает на вход вещественное число и показывает сумму его цифр.
 # Пример:
 # 6782 -> 23
@@ -81,11 +84,23 @@ def task4():
 
 # 5. Реализуйте алгоритм перемешивания списка.
 def task5():
-    pass
+    seq = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11]
+    num_of_shuffles = len(seq)
+
+    for _ in range(num_of_shuffles):
+        first_index = random.randint(0, len(seq)-1)
+        second_index = random.randint(0, len(seq)-1)
+
+        if first_index == second_index:
+            continue
+
+        seq[first_index], seq[second_index] = seq[second_index], seq[first_index]
+
+    print("Результат:", seq)
 
 
 # task1()
 # task2()
 # task3()
-task4()
+# task4()
 task5()
