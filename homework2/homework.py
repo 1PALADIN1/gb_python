@@ -51,7 +51,32 @@ def task3():
 # Найдите произведение элементов на указанных позициях. Позиции хранятся
 # в файле file.txt в одной строке одно число.
 def task4():
-    pass
+    num = int(input("Введите число:\n"))
+    if num < 1:
+        print("Число должно быть больше 1!")
+        return
+
+    ls = []
+    for n in range(-num, num+1, 1):
+        ls.append(n)
+
+    f = open("file.txt", "r")
+    result = 1
+    for line in f:
+        line = line.strip()
+        if not line.isdigit():
+            print(line, " - не число!")
+            continue
+        index = int(line)
+
+        if index >= len(ls):
+            print("Некорректный индекс [", index, "], всего элементов", len(ls))
+            continue
+
+        result *= ls[index]
+
+    f.close()
+    print("Результат:", result)
 
 
 # 5. Реализуйте алгоритм перемешивания списка.
@@ -61,6 +86,6 @@ def task5():
 
 # task1()
 # task2()
-task3()
+# task3()
 task4()
 task5()
