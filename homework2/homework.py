@@ -16,7 +16,20 @@ def task1():
 # Пример:
 # пусть N = 4, тогда [ 1, 2, 6, 24 ] (1, 12, 123, 1234)
 def task2():
-    pass
+    num = int(input("Введите число:\n"))
+    if num < 1:
+        print("Число должно быть больше 1!")
+        return
+
+    result = []
+    for n in range(1, num+1, 1):
+        el = 1
+        for i in range(1, n+1, 1):
+            el *= i
+
+        result.append(el)
+
+    print(result)
 
 
 # 3. Задайте список из n чисел последовательности (1 + 1/n)^n выведите на экран их сумму.
@@ -36,7 +49,7 @@ def task5():
     pass
 
 
-task1()
+# task1()
 task2()
 task3()
 task4()
