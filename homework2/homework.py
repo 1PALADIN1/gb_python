@@ -25,15 +25,19 @@ def task2():
         return
 
     result = []
-    # TODO: вывести (1, 12, 123, 1234)
+    seq = "("
     for n in range(1, num+1, 1):
         el = 1
         for i in range(1, n+1, 1):
             el *= i
+            seq += str(i)
 
         result.append(el)
+        if n < num:
+            seq += ", "
 
-    print(result)
+    seq += ")"
+    print(result, seq)
 
 
 # 3. Задайте список из n чисел последовательности (1 + 1/n)^n выведите на экран их сумму.
@@ -99,8 +103,8 @@ def task5():
     print("Результат:", seq)
 
 
-# task1()
-# task2()
-# task3()
-# task4()
+task1()
+task2()
+task3()
+task4()
 task5()
