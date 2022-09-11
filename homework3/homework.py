@@ -54,6 +54,29 @@ def task3():
 # 2 -> 10
 def task4():
     print("Задание 4")
+    print(decimal_to_bin(45))
+    print(decimal_to_bin(3))
+    print(decimal_to_bin(2))
+    print(decimal_to_bin(0))
+    print(decimal_to_bin(15))
+
+
+def decimal_to_bin(num) -> str:
+    if num == 0:
+        return "0"
+
+    result = []
+    while num > 0:
+        bit = num % 2
+        num = int(num / 2)
+        result.append(bit)
+
+    result_str = ""
+    result.reverse()
+    for i in range(len(result)):
+        result_str += str(result[i])
+
+    return result_str
 
 
 # Задайте число. Составьте список чисел Фибоначчи, в том числе для отрицательных индексов.
@@ -64,7 +87,7 @@ def task5():
 
 
 # task1()
-task2()
+# task2()
 # task3()
-# task4()
+task4()
 # task5()
