@@ -46,6 +46,24 @@ def pair_mul(ls: []) -> []:
 def task3():
     print("Задание 3")
 
+    ls = [1.1, 1.2, 3.1, 5, 10.01]
+    min_fr = 1
+    max_fr = 0
+
+    for el in ls:
+        fract = el - int(el)
+
+        if fract < min_fr:
+            min_fr = fract
+
+        if fract > max_fr:
+            max_fr = fract
+
+    if min_fr >= 1:
+        min_fr = 0
+
+    print("Результат:", max_fr - min_fr)
+
 
 # 4. Напишите программу, которая будет преобразовывать десятичное число в двоичное.
 # Пример:
@@ -88,6 +106,6 @@ def task5():
 
 # task1()
 # task2()
-# task3()
-task4()
+task3()
+# task4()
 # task5()
