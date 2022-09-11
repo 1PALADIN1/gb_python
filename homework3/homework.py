@@ -21,6 +21,22 @@ def task1():
 # [2, 3, 5, 6] => [12, 15]
 def task2():
     print("Задание 2")
+    print(pair_mul([2, 3, 4, 5, 6]))
+    print(pair_mul([2, 3, 5, 6]))
+    print(pair_mul([2]))
+
+
+def pair_mul(ls: []) -> []:
+    result = []
+
+    for i in range(len(ls)):
+        j = len(ls) - i - 1
+        if i > j:
+            break
+
+        result.append(ls[i] * ls[j])
+
+    return result
 
 
 # 3. Задайте список из вещественных чисел. Напишите программу, которая найдёт разницу между
@@ -47,8 +63,8 @@ def task5():
     print("Задание 5")
 
 
-task1()
-# task2()
+# task1()
+task2()
 # task3()
 # task4()
 # task5()
