@@ -1,3 +1,5 @@
+#TODO: ввод с клавиатуры
+
 # 1. Задайте список из нескольких чисел. Напишите программу, которая найдёт
 # сумму элементов списка, стоящих на нечётной позиции.
 # Пример:
@@ -102,10 +104,40 @@ def decimal_to_bin(num) -> str:
 # для k = 8 список будет выглядеть так: [-21 ,13, -8, 5, −3, 2, −1, 1, 0, 1, 1, 2, 3, 5, 8, 13, 21]
 def task5():
     print("Задание 5")
+    num = int(input("Введите число:\n"))
+    print(fibo(num))
+
+
+def fibo(n: int) -> []:
+    fibo_list = []
+    negofibo_list = []
+
+    for i in range(n + 1):
+        if i == 0:
+            fibo_list.append(i)
+            continue
+
+        if i == 1:
+            fibo_list.append(i)
+            negofibo_list.append(i)
+            continue
+
+        fibo_num = fibo_list[i - 1] + fibo_list[i - 2]
+        fibo_list.append(fibo_num)
+        negofibo_list.append(negofibo(fibo_num, i))
+
+    negofibo_list.reverse()
+    return negofibo_list + fibo_list
+
+
+# F(-n) = (-1) ^ (n + 1) * F(n)
+def negofibo(fn: int, i: int) -> int:
+    sign = (-1) ** (i + 1)
+    return sign * fn
 
 
 # task1()
 # task2()
-task3()
+# task3()
 # task4()
-# task5()
+task5()
