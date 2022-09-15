@@ -1,13 +1,11 @@
-#TODO: ввод с клавиатуры
-
 # 1. Задайте список из нескольких чисел. Напишите программу, которая найдёт
 # сумму элементов списка, стоящих на нечётной позиции.
 # Пример:
 # [2, 3, 5, 9, 3] -> на нечётных позициях элементы 3 и 9, ответ: 12
 def task1():
     print("Задание 1")
-
-    ls = [2, 3, 5, 9, 3]
+    input_string = input("Введите последовательность чисел через пробел (пример, 2 3 5 9 3):\n")
+    ls = [int(i) for i in input_string.split()]
     result = 0
     for i in range(len(ls)):
         if i % 2 != 0:
@@ -23,9 +21,14 @@ def task1():
 # [2, 3, 5, 6] => [12, 15]
 def task2():
     print("Задание 2")
-    print(pair_mul([2, 3, 4, 5, 6]))
-    print(pair_mul([2, 3, 5, 6]))
-    print(pair_mul([2]))
+    input_string = input("Введите последовательность чисел через пробел (пример, 2 3 4 5 6):\n")
+    ls = [int(i) for i in input_string.split()]
+    print(pair_mul(ls))
+
+    # tst
+    # print(pair_mul([2, 3, 4, 5, 6]))
+    # print(pair_mul([2, 3, 5, 6]))
+    # print(pair_mul([2]))
 
 
 def pair_mul(ls: []) -> []:
@@ -47,8 +50,9 @@ def pair_mul(ls: []) -> []:
 # [1.1, 1.2, 3.1, 5, 10.01] => 0.19
 def task3():
     print("Задание 3")
+    input_string = input("Введите последовательность чисел через пробел (пример, 1.1 1.2 3.1 5 10.01):\n")
+    ls = [float(i) for i in input_string.split()]
 
-    ls = [1.1, 1.2, 3.1, 5, 10.01]
     min_fr = 1
     max_fr = 0
 
@@ -74,11 +78,15 @@ def task3():
 # 2 -> 10
 def task4():
     print("Задание 4")
-    print(decimal_to_bin(45))
-    print(decimal_to_bin(3))
-    print(decimal_to_bin(2))
-    print(decimal_to_bin(0))
-    print(decimal_to_bin(15))
+    num = int(input("Введите число:\n"))
+    print(decimal_to_bin(num))
+
+    # tst
+    # print(decimal_to_bin(45))
+    # print(decimal_to_bin(3))
+    # print(decimal_to_bin(2))
+    # print(decimal_to_bin(0))
+    # print(decimal_to_bin(15))
 
 
 def decimal_to_bin(num) -> str:
@@ -136,8 +144,8 @@ def negofibo(fn: int, i: int) -> int:
     return sign * fn
 
 
-# task1()
-# task2()
-# task3()
-# task4()
+task1()
+task2()
+task3()
+task4()
 task5()
