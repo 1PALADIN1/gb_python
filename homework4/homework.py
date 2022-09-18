@@ -1,4 +1,5 @@
 import math
+import random
 
 
 # Вычислить число c заданной точностью d
@@ -62,7 +63,29 @@ def task3():
 # Пример:
 # k=2 => 2x² + 4x + 5 = 0 или x² + 5 = 0 или 10*x² = 0
 def task4():
-    pass
+    k = int(input("Введите число k:\n"))
+
+    result = ""
+    while k >= 0:
+        a = random.randint(0, 100)
+        if a == 0:
+            continue
+
+        if k == 0:
+            result += str(a)
+        elif k == 1:
+            result += str(a) + "x + "
+        else:
+            result += str(a) + "x^" + str(k) + " + "
+
+        k -= 1
+
+    result += " = 0"
+    print(result)
+
+    f = open("task4.txt", "w")
+    f.write(result)
+    f.close()
 
 
 # Даны два файла, в каждом из которых находится запись многочлена.
@@ -73,6 +96,6 @@ def task5():
 
 # task1()
 # task2()
-task3()
+# task3()
 task4()
 task5()
