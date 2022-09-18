@@ -21,7 +21,20 @@ def task1():
 
 # Задайте натуральное число N. Напишите программу, которая составит список простых множителей числа N.
 def task2():
-    pass
+    n = int(input("Введите число:\n"))
+
+    result = []
+    i = 2
+    while i <= math.sqrt(n):
+        while n % i == 0:
+            n = int(n / i)
+            result.append(i)
+        i += 1
+
+    if n != 1:
+        result.append(n)
+
+    print(result)
 
 
 # Задайте последовательность чисел. Напишите программу, которая выведет
@@ -44,7 +57,7 @@ def task5():
     pass
 
 
-task1()
+# task1()
 task2()
 task3()
 task4()
