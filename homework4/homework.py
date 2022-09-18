@@ -40,7 +40,21 @@ def task2():
 # Задайте последовательность чисел. Напишите программу, которая выведет
 # список неповторяющихся элементов исходной последовательности.
 def task3():
-    pass
+    input_string = input("Введите последовательность чисел через пробел (пример, 2 3 5 9 3):\n")
+    ls = [int(i) for i in input_string.split()]
+    d = {}
+    for x in ls:
+        if not (x in d):
+            d[x] = 0
+
+        d[x] += 1
+
+    result = []
+    for key, value in d.items():
+        if value == 1:
+            result.append(key)
+
+    print(result)
 
 
 # Задана натуральная степень k. Сформировать случайным образом список
@@ -58,7 +72,7 @@ def task5():
 
 
 # task1()
-task2()
+# task2()
 task3()
 task4()
 task5()
