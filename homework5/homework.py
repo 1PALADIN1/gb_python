@@ -27,7 +27,7 @@ def task1():
 # взять первому игроку, чтобы забрать все конфеты у своего конкурента?
 # a) Добавьте игру против бота
 # b) Подумайте как наделить бота "интеллектом"
-def task2():
+def task2(play_with_bot: bool):
     candies = 2021
     turn_num = 1
     whose_turn = random.choice([1, 2])
@@ -35,22 +35,44 @@ def task2():
 
     while candies > 0:
         print("============== ХОД", turn_num, "==============")
-        take_candies = candy_player_turn(whose_turn, candies)
 
+        if not play_with_bot:
+            # играют два игрока
+            take_candies = candy_player_turn(whose_turn, candies)
+
+            candies -= take_candies
+            if candies > 0:
+                cls()
+        else:
+            # играем с ботом
+            # 1 - игрок
+            # 2 - бот
+            if whose_turn == 1:
+                take_candies = candy_player_turn(whose_turn, candies)
+                if candies > 0:
+                    cls()
+            else:
+                take_candies = candy_bot_turn(candies)
+                print("Бот забрал", take_candies, "конфет")
+
+        # переключаем на следующий ход
         candies -= take_candies
-
         if candies > 0:
             turn_num += 1
             whose_turn = 1 if whose_turn == 2 else 2
-            cls()
 
-    print("Игра окончена! Победил игрок", whose_turn)
+    if not play_with_bot:
+        print("Игра окончена! Победил игрок", whose_turn)
+        return
+
+    winner = "Бот" if whose_turn == 2 else "Игрок"
+    print("Игра окончена! Победил", winner)
 
 
+# логика для игрока
 def candy_player_turn(player: int, candies_left: int) -> int:
-    print("Ход игрока", player, "\nОсталось конфет:", candies_left)
+    print("Ходит игрок", player, "\nОсталось конфет:", candies_left)
 
-    result = 0
     while True:
         max_candies = max_take_candies if max_take_candies < candies_left else candies_left
         result = int(input("Введите количество конфет (MAX: " + str(max_candies) + "):\n"))\
@@ -66,6 +88,28 @@ def candy_player_turn(player: int, candies_left: int) -> int:
         break
 
     return result
+
+
+# логика для бота
+def candy_bot_turn(candies_left: int) -> int:
+    print("Ходит бот\nОсталось конфет:", candies_left)
+    if candies_left <= max_take_candies:
+        # забираем оставшиеся конфеты и побеждаем
+        return candies_left
+
+    # стремимся оставить игроку такое число конфет
+    target = 1 + max_take_candies
+    if candies_left == target:
+        # бот проиграл, выдаём любое число
+        return random.randint(1, max_take_candies)
+
+    # необходимо, чтобы у бота получалось 29 58 87 116 145 и т.д. для выигрыша
+    ml = int(candies_left / target)
+    next_win_number = target * ml
+    if candies_left - next_win_number == 0:
+        return max_take_candies
+
+    return candies_left - next_win_number
 
 
 def cls():
@@ -88,6 +132,7 @@ def task4():
 
 
 # task1()
-task2()
+# task2(False)
+task2(True)
 task3()
 task4()
