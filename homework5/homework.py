@@ -280,11 +280,72 @@ def draw_field(field: [[]]):
 # Текст после кодировки: 12W1B12W3B24W1B14W
 # Текст после дешифровки: WWWWWWWWWWWWBWWWWWWWWWWWWBBBWWWWWWWWWWWWWWWWWWWWWWWWBWWWWWWWWWWWWWW
 def task4():
-    pass
+    # encode
+    result = ""
+    with open("task4.txt", "r") as f:
+        input_lines = f.readlines()
+        for line in input_lines:
+            result += encode_string(line)
+
+    print("Encode result:\n", result, sep="")
+    with open("task4_encode.txt", "w") as f:
+        f.write(result)
+
+    # decode
+    result = ""
+    with open("task4_encode.txt", "r") as f:
+        input_lines = f.readlines()
+        for line in input_lines:
+            result += decode_string(line)
+
+    print("Decode result:\n", result, sep="")
+    with open("task4_decode.txt", "w") as f:
+        f.write(result)
 
 
-# task1()
-# task2(False)
-# task2(True)
+def encode_string(input_str: str) -> str:
+    result = ""
+    symbol = ""
+    count = 0
+
+    for s in input_str:
+        if symbol != s:
+            if symbol != "":
+                # записываем при смене последовательности символов
+                result += str(count) + symbol
+
+            symbol = s
+            count = 0
+
+        count += 1
+
+    # записываем оставшиеся символы
+    result += str(count) + symbol
+    return result
+
+
+def decode_string(input_str: str) -> str:
+    result = ""
+    number_string = ""
+
+    for s in input_str:
+        if s.isdigit():
+            # считываем число
+            number_string += s
+            continue
+
+        num = int(number_string)
+        number_string = ""
+
+        # выводим заданное количество символов
+        for i in range(num):
+            result += s
+
+    return result
+
+
+task1()
+task2(False)
+task2(True)
 task3()
 task4()
