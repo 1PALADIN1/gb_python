@@ -2,7 +2,7 @@ def show_menu():
     menu = [
         "Показать сотрудников",
         "Добавить сотрудника",
-        "Удалить сотрудников",
+        "Удалить сотрудника",
         "Изменить запись сотрудника",
         "Экспортировать список",
         "Импортировать список",
@@ -12,7 +12,15 @@ def show_menu():
     for item in enumerate(menu, 1):
         print(item[0], "-", item[1])
 
-    return int(input("Выберете пункт меню:\n"))
+    while True:
+        try:
+            input_result = int(input("Выберете пункт меню:\n"))
+            if input_result < 1 or input_result > len(menu):
+                raise ValueError
+
+            return input_result
+        except ValueError:
+            print_message("Некорректный пункт меню, повторите ввод")
 
 
 def show_add_user():
@@ -45,12 +53,30 @@ def show_users_list(data: [{}]):
 
     index = 1
     for row in data:
-        print(str(index) + ". " + row["firstname"], row["lastname"], row["job_title"], row["phone"], sep='|')
+        print(f'{index}. {row["firstname"]}', row["lastname"], row["job_title"], row["phone"], sep='|')
         index += 1
 
 
 def show_export_formats():
-    pass
+    formats = [
+        "csv",
+        "json",
+        "xml",
+        "Назад",
+    ]
+
+    for item in enumerate(formats, 1):
+        print(item[0], "-", item[1])
+
+    while True:
+        try:
+            input_result = int(input("Выберете формат:\n"))
+            if input_result < 1 or input_result > len(formats):
+                raise ValueError
+
+            return input_result
+        except ValueError:
+            print_message("Некорректный пункт меню, повторите ввод")
 
 
 def print_message(msg):
